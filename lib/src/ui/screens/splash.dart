@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:onda_ritmica/src/ui/screens/devices.dart';
 import 'package:onda_ritmica/src/ui/widgets/splash/animated_logo.dart';
+import 'package:onda_ritmica/src/ui/theme/color.dart';
+
+import '../theme/color.dart';
+import '../theme/color.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -14,11 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(
-        // child: Logo(
-        //   size: MediaQuery.of(context).size.width * 0.3,
-        // ),
-        child: AnimatedLogo(
-          size: MediaQuery.of(context).size.width * 0.3,
+        child: ElevatedButton(
+          child: AnimatedLogo(
+            size: MediaQuery.of(context).size.width * 0.3,
+          ),
+          style: ElevatedButton.styleFrom(primary: primary),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Devices()),
+            );
+          },
         ),
       ),
     );
