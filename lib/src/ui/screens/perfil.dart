@@ -42,7 +42,10 @@ class Perfil extends State<Perfil2> {
                       alignment: Alignment.topRight,
                     ),
                     Text('MI PERFIL',
-                        style: Theme.of(context).textTheme.headline5),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5
+                            .copyWith(fontWeight: FontWeight.w700)),
                   ],
                 ),
                 Row(
@@ -61,8 +64,11 @@ class Perfil extends State<Perfil2> {
                 ),
                 Row(
                   children: [
-                    Text('Nombre ',
-                        style: Theme.of(context).textTheme.subtitle1),
+                    Text('Nombre   ',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontWeight: FontWeight.w700)),
                     Text('Pablo Bautista',
                         style: Theme.of(context).textTheme.bodyText1),
                   ],
@@ -73,16 +79,22 @@ class Perfil extends State<Perfil2> {
                 ),
                 Row(
                   children: [
-                    Text('Correo electronico ',
-                        style: Theme.of(context).textTheme.subtitle1),
+                    Text('Correo electronico   ',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontWeight: FontWeight.w700)),
                     Text('pablo@pixela.tech',
                         style: Theme.of(context).textTheme.bodyText1),
                   ],
                 ),
                 Row(
                   children: [
-                    Text('Creador de sonidos ',
-                        style: Theme.of(context).textTheme.subtitle1),
+                    Text('Creador de sonidos',
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontWeight: FontWeight.w700)),
                     Switch(
                       value: true,
                       onChanged: (value) {},
@@ -93,7 +105,10 @@ class Perfil extends State<Perfil2> {
                 Row(
                   children: [
                     Text('Cambiar contraseña',
-                        style: Theme.of(context).textTheme.subtitle1),
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontWeight: FontWeight.w700)),
                   ],
                 ),
                 SizedBox(
