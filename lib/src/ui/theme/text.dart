@@ -32,7 +32,7 @@ final rythmTextTheme = TextTheme(
   headline6: TextStyle(
     fontFamily: 'Yaahowu',
     fontSize: 20,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
     letterSpacing: 0.15,
   ),
   subtitle1: TextStyle(
@@ -60,9 +60,10 @@ final rythmTextTheme = TextTheme(
     letterSpacing: 0.25,
   ),
   button: TextStyle(
+    color: Colors.white,
     fontFamily: 'Yaahowu',
     fontSize: 14,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w700,
     letterSpacing: 1.25,
   ),
   caption: TextStyle(

@@ -13,11 +13,14 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/images/logo.svg',
-      color: color,
-      fit: BoxFit.fitHeight,
-      height: size,
+    return Hero(
+      tag: 'rythm-logo',
+      child: SvgPicture.asset(
+        'assets/images/logo.svg',
+        color: color,
+        fit: BoxFit.fitHeight,
+        height: size,
+      ),
     );
   }
 }
