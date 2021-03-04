@@ -1,13 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:onda_ritmica/src/ui/screens/home.dart';
+import 'package:onda_ritmica/src/ui/screens/register.dart';
 import 'package:onda_ritmica/src/ui/theme/color.dart';
 import 'package:onda_ritmica/src/ui/widgets/common/gap.dart';
 import 'package:onda_ritmica/src/ui/widgets/common/rythm_button.dart';
 import 'package:onda_ritmica/src/ui/widgets/session/rythm_field.dart';
 import 'package:onda_ritmica/src/ui/widgets/splash/logo.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String _email = '';
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +44,27 @@ class LoginScreen extends StatelessWidget {
                 RythmField(
                   label: "Correo electrónico",
                   hint: "hola@biocretiva...",
+                  onChanged: (email) {
+                    setState(() {
+                      _email = email;
+                    });
+                  },
                 ),
                 Gap(),
                 RythmField(
                   label: "Contraseña",
                   hint: "********",
                   isPassword: true,
+                  onChanged: (password) {
+                    setState(() {
+                      _password = password;
+                    });
+                  },
                 ),
                 Gap(size: 24.0),
                 RythmButton(
                   text: "Iniciar sesion",
-                  onPressed: () {},
+                  onPressed: _onLoginTap,
                   color: ButtonColor.Green,
                 ),
                 Gap(size: 24.0),
@@ -102,7 +123,34 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  void _onRegisterTap() {}
+  void _onLoginTap() {
+    print(_email);
+    print(_password);
+    _login(_email, _password);
+  }
+
+  void _login(String email, String password) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      // Para movernos hacia otra pantalla
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ),
+      );
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  void _onRegisterTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => RegisterScreen(),
+      ),
+    );
+  }
 }
 
 final description =
