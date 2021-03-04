@@ -4,12 +4,14 @@ class RythmField extends StatefulWidget {
   final String hint;
   final String label;
   final bool isPassword;
+  final Function(String) onChanged;
 
   const RythmField({
     Key key,
     this.hint,
     this.isPassword = false,
     this.label,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class _RythmFieldState extends State<RythmField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: widget.hint,

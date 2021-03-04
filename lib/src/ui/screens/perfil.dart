@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onda_ritmica/src/ui/widgets/splash/logo.dart';
@@ -177,7 +178,9 @@ class Perfil extends State<Perfil2> {
                   elevation: 2.0,
                   splashColor: Color(0xff00D8A4),
                   color: Color(0xff00D8A4),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut();
+                  },
                   padding: const EdgeInsets.symmetric(),
                   shape: StadiumBorder(
                     side: BorderSide(
