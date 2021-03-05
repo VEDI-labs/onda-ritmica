@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:onda_ritmica/src/ui/screens/new_device.dart';
 
@@ -7,18 +8,6 @@ class Devices extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dispositivos"),
-      ),
-      body: ListView(
-        children: [
-          miCard("Rosas Resilientes",
-              " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu laoreet orci, in fermentum ligula."),
-          miCard("Rosas Resilientes",
-              " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu laoreet orci, in fermentum ligula."),
-          miCard("Rosas Resilientes",
-              " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu laoreet orci, in fermentum ligula."),
-          miCard("Margaritas Resilientes",
-              " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu laoreet orci, in fermentum ligula.")
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -30,6 +19,21 @@ class Devices extends StatelessWidget {
         },
         child: Icon(Icons.add),
       ),
+      body: FutureBuilder<QuerySnapshot>(
+          future:
+              FirebaseFirestore.instance.collection('resilient-objects').get(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasData) {
+              // <3> Retrieve `List<DocumentSnapshot>` from snapshot
+              final List<DocumentSnapshot> documents = snapshot.data.docs;
+              return ListView(
+                  children: documents
+                      .map((doc) => miCard(doc['name'], doc['type']))
+                      .toList());
+            }
+            return Text('No tienes dispositivos resilientes registrados :(');
+          }),
     );
   }
 }
