@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:onda_ritmica/src/ui/widgets/common/gap.dart';
 import 'package:onda_ritmica/src/ui/widgets/splash/logo.dart';
 
-//import 'package:onda_ritmica/src/ui/widgets/splash/logo.dart';
-
-
 class FormS extends StatefulWidget {
   @override
   _FormSState createState() => _FormSState();
@@ -18,7 +15,6 @@ class _FormSState extends State<FormS> {
         return Scaffold(          
           body: Stack(            
             children: [
-
               ListView(
                 padding: EdgeInsets.only(bottom: 120.0),
                 children: <Widget>[
@@ -28,7 +24,9 @@ class _FormSState extends State<FormS> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: FlatButton(
-                            onPressed: (){},
+                            onPressed: (){
+                                Navigator.of(context).pop();
+                            },
                             child: Icon(
                               Icons.keyboard_arrow_left, 
                               size: 46.0,
